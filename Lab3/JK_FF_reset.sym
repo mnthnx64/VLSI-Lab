@@ -1,0 +1,45 @@
+USER SYMBOL by DSCH3
+DATE 9/5/2019 8:58:12 AM
+SYM  #JK_FF_reset
+BB(0,0,40,50)
+TITLE 10 -7  #JK_FF_reset
+MODEL 6000
+REC(5,5,30,40)
+PIN(15,50,0.00,0.00)Clk
+PIN(15,0,0.00,0.00)reset
+PIN(0,30,0.00,0.00)K
+PIN(0,20,0.00,0.00)J
+PIN(40,20,2.00,1.00)Q`
+PIN(40,10,2.00,1.00)Q
+LIG(15,45,15,50)
+LIG(15,0,15,5)
+LIG(0,30,5,30)
+LIG(0,20,5,20)
+LIG(35,20,40,20)
+LIG(35,10,40,10)
+LIG(5,5,5,45)
+LIG(5,5,35,5)
+LIG(35,5,35,45)
+LIG(35,45,5,45)
+VLG module JK_FF_reset( Clk,reset,K,J,Q`,Q);
+VLG  input Clk,reset,K,J;
+VLG  output Q`,Q;
+VLG  wire w4,w5,w6,w8,w9,w10,w11,w12;
+VLG  wire w15,;
+VLG  pmos #(1) pmos_1(w5,Q,w4); // 2.0u 0.12u
+VLG  not #(1) inv_2(Q,Q`);
+VLG  nmos #(1) nmos_3(w8,w6,Clk); // 1.0u 0.12u
+VLG  xor #(1) xor2_4(w6,w9,w10);
+VLG  nmos #(1) nmos_5(w5,w11,w4); // 1.0u 0.12u
+VLG  not #(1) inv_6(Q`,w5);
+VLG  not #(1) inv_7(w12,w8);
+VLG  not #(1) inv_8(w11,w12);
+VLG  pmos #(1) pmos_9(w8,w11,Clk); // 2.0u 0.12u
+VLG  not #(1) inv_10(w4,Clk);
+VLG  nmos #(1) nmos_11(w5,vss,reset); // 1.0u 0.12u
+VLG  nmos #(1) nmos_12(w8,vss,reset); // 1.0u 0.12u
+VLG  and #(1) and2_13(w9,J,Q`);
+VLG  and #(1) and2_14(w10,Q,w15);
+VLG  not #(1) inv_15(w15,K);
+VLG endmodule
+FSYM
